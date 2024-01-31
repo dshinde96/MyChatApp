@@ -1,0 +1,170 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+/* Navbar*/
+.navbar {
+  background-color: white;
+  /* margin-bottom: 10px; */
+}
+
+.profile_pic {
+  height: 40px;
+  width: 40px;
+}
+
+.profile {
+  /* min-width: 100px; */
+  /* position: sticky; */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 150px;
+}
+
+/*Home*/
+.mainCnt{
+  width: 100vw;
+  min-height: 92vh;
+  display: flex;
+  background-color: white;
+}
+.userTemp{
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+  border-radius: 10px;
+  transition: all linear 0.1s;
+}
+.userTemp:hover{
+  cursor: pointer;
+  background-color: #f3f3f3;
+  font-weight: bold;
+  border-radius: 30px;
+}
+.reciverProfile{
+  margin: 0px 10px;
+}
+.reciverProfile h5{
+  margin: 0px;
+}
+.userCnt{
+  width: 30%;
+}
+.UserMap{
+  margin: 10px;
+}
+.newUser{
+  margin: 10px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+.newUser input{
+  width: 70%;
+  /* border: none; */
+  outline: none;
+  padding: 0px 10px;
+  border: 0.5px solid rgb(44, 42, 42);
+  border-radius: 10px;
+}
+
+/*ChatPage*/
+.chatCnt{
+  width: 70%;
+  background-color: white;
+}
+.profileCnt{
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  background-color: #f3f3f3;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 5px 0px;
+}
+.profileContent{
+  margin: 0px 20px;
+}
+.profileContent h5{
+  margin: 0px;
+}
+
+.msgCnt{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  height: 87%;
+  margin: 0px 10px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+}
+.newMsgCnt{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self:flex-end;
+  padding: 0px 10px;
+  margin-bottom: 20px;
+  
+}
+.newMsgCnt input{
+  width: 80%;
+  outline: none;
+  padding: 5px 10px;
+}
+
+.activeClass{
+  background-color: #007FFF;
+}
+.activeClass:hover{
+  background-color: #007FFF;
+  border-radius: 10px;
+}
+
+.sentmsg{
+  padding: 0px 10%;
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  margin: 10px;
+}
+
+.recivedmsg{
+  padding: 0px 10%;
+  display: flex;
+  width: 100%;
+  justify-content: left;
+  margin: 10px;
+}
+
+.sentmsg spam{
+  max-width: 60%;
+  padding: 5px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(166, 235, 203);
+}
+
+.recivedmsg spam{
+  max-width: 60%;
+  padding: 5px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(203, 235, 166);
+}
+.messages{
+  display: flex;
+  flex-direction: column;
+  height:72vh;
+  overflow-y: scroll;
+}
+.messages::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
