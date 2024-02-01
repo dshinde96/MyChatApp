@@ -22,7 +22,7 @@ const Signup=()=>{
             setErrmsg(data.msg)
             return setinvalidcred(true);
         }
-        sessionStorage.setItem("authTocken", data.authTocken);
+        sessionStorage.setItem("authTocken", data.authToken);
         sessionStorage.setItem("user", data.name);
         sessionStorage.setItem("email", data.email);
         navigate('/');

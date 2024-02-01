@@ -57,7 +57,7 @@ const Login = () => {
                             <input type="button" className="subbtn" value="Login" onClick={handleLogin}/>
                         </div>
                         <div class="signup-link">
-                            Not a member? <Link class="nav-link" to="/register">Rgister Here</Link>
+                            Not a member? <Link class="nav-link" to="/signup">Rgister Here</Link>
                         </div>
                     </form>
                 </div>
