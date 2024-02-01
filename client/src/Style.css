@@ -37,6 +37,7 @@
   align-items: center;
   border-radius: 10px;
   transition: all linear 0.08s;
+  overflow: hidden;
 }
 .userTemp:hover{
   cursor: pointer;
@@ -128,6 +129,8 @@
 
 .activeClass{
   background-color: #007FFF;
+  color: white;
+  font-weight: bold;
 }
 .activeClass:hover{
   background-color: #007FFF;
