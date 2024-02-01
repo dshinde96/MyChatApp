@@ -52,6 +52,10 @@ const Home = () => {
         if(newChatUser===sessionStorage.getItem('email')){
            return setErrmsg('You are logged in with Same email');
         }
+        if(chats.some((chat)=>chat.reciver.email===newChatUser)){
+            return setErrmsg("User already present in your chats");
+        }
+
         socket.emit('newChat', newChatUser);
     }
     return (
