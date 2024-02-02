@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import ChatPage from "./ChatPage";
 import ChatContext, { ChatState } from "../context/chatContext";
+import './CSS/Home.css'
 const Home = () => {
     const [newChatUser, setnewChatUser] = useState('');
     const { curChat,setcurChat } = useContext(ChatContext);

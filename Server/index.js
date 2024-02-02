@@ -3,7 +3,7 @@ const { Server } = require("socket.io");
 const http = require('http');
 const cors = require('cors');
 const ConnectToMongo = require('./db');
-const {  AuthenticateUserForSocket } = require('./Middleware/Authentication');
+const { AuthenticateUserForSocket,AuthenticateUserForHTTP } = require('./Middleware/Authentication');
 const Chats = require('./Models/Chats');
 const UserModel = require('./Models/User');
 
@@ -15,7 +15,8 @@ ConnectToMongo(mongoURL);
 
 app.use(express.json());
 app.use(cors())
-app.use('/user', require('./Routes/UserRoute'));
+app.use('/user', require('./Routes/UserRoute'));   //userlogin and signup routes
+app.use('/file',require('./Routes/FilesRoute'))    //file upload and download routes
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -24,8 +25,8 @@ const io = new Server(server, {
         methods: ['GET', 'POST']
     }
 });
-const Dashboard = io.of('/home');
-const chat = io.of('/chat');
+const Dashboard = io.of('/home');    //All cats info
+const chat = io.of('/chat');         //Particular chat
 
 Dashboard.use(AuthenticateUserForSocket);
 chat.use(AuthenticateUserForSocket);
@@ -81,16 +82,29 @@ chat.on('connection', (socket) => {
 
     socket.on('newMsg', async (msg) => {
         let chat = await Chats.findById(chatID);
-        const newMsg = {
-            msgType: "text",
-            sender: user._id,
-            reciver: msg.reciverID,
-            msgContent: msg.data
+        let newMsg = {};
+        if(msg.msgType=='text'){
+            newMsg={
+                msgType: msg.msgType,
+                sender: user._id,
+                reciver: msg.reciverID,
+                msgContent: msg.data,
+                filePath:""
+            }
+        }
+        else{
+            newMsg={
+                msgType: msg.msgType,
+                sender: user._id,
+                reciver: msg.reciverID,
+                msgContent: msg.data.filename,
+                filePath:msg.data.path
+            }
         }
         chat.messages.push(newMsg);
         await Chats.findByIdAndUpdate(chatID, { $set: chat });
-        socket.emit('newMsg', { msgContent: newMsg.msgContent, msgType: newMsg.msgType, sender: user, reciver: newMsg.reciver });
-        socket.broadcast.to(chatID).emit('newMsg', { msgContent: newMsg.msgContent, msgType: newMsg.msgType, sender: user, reciver: newMsg.reciver });
+        socket.emit('newMsg', { msgContent: newMsg.msgContent, msgType: newMsg.msgType, sender: user, reciver: newMsg.reciver,filePath:newMsg.filePath });
+        socket.broadcast.to(chatID).emit('newMsg', { msgContent: newMsg.msgContent, msgType: newMsg.msgType, sender: user, reciver: newMsg.reciver,filePath:newMsg.filePath });
 
     })
 })

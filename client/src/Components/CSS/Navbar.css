@@ -1,0 +1,18 @@
+.navbar {
+    background-color: white;
+    /* margin-bottom: 10px; */
+  }
+  
+  .profile_pic {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .profile {
+    /* min-width: 100px; */
+    /* position: sticky; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 150px;
+  }

@@ -9,6 +9,7 @@
 #node modules
 node_modules
 
+
 #Private Files
 Private
 .env

@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import ChatContext from "../context/chatContext";
 import io from 'socket.io-client';
-import Nochat from './Nochat.gif'
+import Nochat from './Nochat.gif';
+import Message from "./Message";
+import './CSS/Chatpage.css'
 
 const ChatCnt = () => {
     const { curChat } = useContext(ChatContext);
     const [ChatMsg, setChatMsg] = useState([]);
     const [textMsg, setTextMsg] = useState();
+    const [file,setfile]=useState();
     const [socket, setSocket] = useState();
     const [msgType,setMsgType]=useState('text');
 
@@ -46,10 +49,33 @@ const ChatCnt = () => {
         })
     }, [socket])
 
-    const SendMsg = () => {
-        if (!socket || !textMsg) return;
-        socket.emit('newMsg', { data: textMsg, reciverID: curChat.reciver._id });
-        setTextMsg('');
+    const uploadfile=async()=>{
+        const formData=new FormData();
+        formData.append('file',file);
+        const url = `http://localhost:8000/file/upload`;
+        const response = await fetch(url, {
+            method: "POST",
+            headers:{
+                "authTocken":sessionStorage.getItem('authTocken')
+            },
+            body: formData,
+        });
+        const data=response.json();
+        return data;
+    }
+
+    const SendMsg = async() => {
+        if (!socket) return;
+        if(msgType=='text'){
+            if(!textMsg)return;
+            socket.emit('newMsg', { data: textMsg,msgType, reciverID: curChat.reciver._id });
+            setTextMsg('');
+        }
+        else{
+            if(!file)return;
+            const data=await uploadfile();
+            socket.emit('newMsg', { data:data.file,msgType, reciverID: curChat.reciver._id });
+        }
     }
     return (
         <>
@@ -66,17 +92,16 @@ const ChatCnt = () => {
                 <div className="msgCnt">
                     <div className="messages">
                         {ChatMsg && ChatMsg.map((msg) =>
-                            <div className={`${msg.sender.email === sessionStorage.getItem("email") ? "sentmsg" : "recivedmsg"}`}>
-                                <spam>{msg.msgContent}</spam>
-                            </div>
+                            {return (<Message msg={msg}/>)}
                         )}
                     </div>
                     <div className="newMsgCnt">
                     <select onChange={(e)=>setMsgType(e.target.value)}>
                         <option value='text'>Text</option>
-                        <option value='file'>File</option>
+                        <option value='file'>Attachent</option>
                     </select>
-                        <input type={`${msgType}`} value={textMsg} className="mx-2" placeholder="Enter your Message" onChange={(e) => setTextMsg(e.target.value)} />
+                        {msgType=='text'?<input type='text' value={textMsg} className="mx-2" placeholder="Enter your Message" onChange={(e) => setTextMsg(e.target.value)} />:
+                        <input type='file' className="mx-2" placeholder="Enter your Message" onChange={(e) => setfile(e.target.files[0])} />}
                         <button className="btn btn-primary mx-2" type="button" onClick={SendMsg}>Send</button>
                     </div>
                 </div>

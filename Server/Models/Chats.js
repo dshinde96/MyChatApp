@@ -27,6 +27,9 @@ const Chat=new Schema({
         msgContent:{
             type:String,
             required:true
+        },
+        filePath:{
+            type:String
         }
     }]
 },{timestamps:true})

@@ -1,0 +1,65 @@
+/*Home*/
+.mainCnt{
+    width: 100vw;
+    min-height: 92vh;
+    display: flex;
+    background-color: white;
+  }
+  .userTemp{
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    align-items: center;
+    border-radius: 10px;
+    transition: all linear 0.08s;
+    overflow: hidden;
+  }
+  .userTemp:hover{
+    cursor: pointer;
+    background-color: #f3f3f3;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
+  .activeClass{
+    background-color: #007FFF;
+    color: white;
+    font-weight: bold;
+  }
+  .activeClass:hover{
+    background-color: #0076eb;
+    border-radius: 10px;
+  }
+  .reciverProfile{
+    margin: 0px 10px;
+  }
+  .reciverProfile h5{
+    margin: 0px;
+  }
+  .userCnt{
+    width: 30%;
+  }
+  .UserMap{
+    margin: 10px;
+    height:80vh;
+    overflow-y: scroll;
+  }
+  .UserMap::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  .newUser{
+    margin: 10px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+  }
+  .newUser input{
+    width: 70%;
+    /* border: none; */
+    outline: none;
+    padding: 0px 10px;
+    border: 0.5px solid rgb(44, 42, 42);
+    border-radius: 10px;
+  }

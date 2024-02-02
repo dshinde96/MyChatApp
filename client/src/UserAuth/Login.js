@@ -18,7 +18,6 @@ const Login = () => {
             body: JSON.stringify(user),
         });
         const data = await response.json();
-        console.log(data);
         if (response.status != 200) {
             setErrmsg(data.msg);
             setinvalidcred(true);

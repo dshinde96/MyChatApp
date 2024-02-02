@@ -1,0 +1,84 @@
+.sentmsg {
+    padding: 0px 10%;
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    margin: 10px;
+}
+
+.recivedmsg {
+    padding: 0px 10%;
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    margin: 10px;
+}
+
+.sentmsg spam {
+    max-width: 60%;
+    padding: 5px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(166, 235, 203);
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.recivedmsg spam {
+    max-width: 60%;
+    padding: 5px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(203, 235, 166);
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.sentattch {
+    padding: 0px 10%;
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    margin: 10px;
+}
+.sentattch:hover{
+    cursor: pointer;
+}
+.recivedattch {
+    padding: 0px 10%;
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    margin: 10px;
+}
+.recivedattch:hover{
+    cursor: pointer;
+}
+.sentattch spam {
+    max-width: 60%;
+    padding: 5px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(166, 235, 203);
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.sentattch spam p{
+    width: 90%;
+    overflow: hidden;
+}
+.recivedattch spam {
+    max-width: 60%;
+    padding: 5px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(203, 235, 166);
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.sentattch.recivedattch spam p{
+    width: 90%;
+    height: 25px;
+    overflow: hidden;
+}
