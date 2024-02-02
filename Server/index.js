@@ -105,7 +105,6 @@ chat.on('connection', (socket) => {
         await Chats.findByIdAndUpdate(chatID, { $set: chat });
         socket.emit('newMsg', { msgContent: newMsg.msgContent, msgType: newMsg.msgType, sender: user, reciver: newMsg.reciver,filePath:newMsg.filePath });
         socket.broadcast.to(chatID).emit('newMsg', { msgContent: newMsg.msgContent, msgType: newMsg.msgType, sender: user, reciver: newMsg.reciver,filePath:newMsg.filePath });
-
     })
 })
 
