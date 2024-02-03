@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useNavigate,Link } from "react-router-dom";
 import "./Login.css";
 import Nav from './AuthNav';
@@ -18,7 +18,7 @@ const Login = () => {
             body: JSON.stringify(user),
         });
         const data = await response.json();
-        if (response.status != 200) {
+        if (response.status !== 200) {
             setErrmsg(data.msg);
             setinvalidcred(true);
             return;
@@ -36,27 +36,27 @@ const Login = () => {
         <>
             <Nav/>
             <div className="Logincnt">
-                <div class="wrapper">
-                    <div class="title">
+                <div className="wrapper">
+                    <div className="title">
                         Login Form
                     </div>
                     <form action="#">
-                        <div class="field">
+                        <div className="field">
                             <input type="text" required name="email" onChange={handle_change}/>
                                 <label>Email Address</label>
                         </div>
-                        <div class="field">
+                        <div className="field">
                             <input type="password" required name="password" onChange={handle_change}/>
                                 <label>Password</label>
                         </div>
                         <div className="Invalid">
                             <p>{invalidcred?errmsg:""}</p>
                         </div>
-                        <div class="field">
+                        <div className="field">
                             <input type="button" className="subbtn" value="Login" onClick={handleLogin}/>
                         </div>
-                        <div class="signup-link">
-                            Not a member? <Link class="nav-link" to="/signup">Rgister Here</Link>
+                        <div className="signup-link">
+                            Not a member? <Link className="nav-link" to="/signup">Rgister Here</Link>
                         </div>
                     </form>
                 </div>

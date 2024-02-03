@@ -1,23 +1,32 @@
+require('dotenv').config()
 const express = require('express');
 const { Server } = require("socket.io");
 const http = require('http');
 const cors = require('cors');
 const ConnectToMongo = require('./db');
-const { AuthenticateUserForSocket,AuthenticateUserForHTTP } = require('./Middleware/Authentication');
+const { AuthenticateUserForSocket } = require('./Middleware/Authentication');
 const Chats = require('./Models/Chats');
 const UserModel = require('./Models/User');
+const path = require('path');
 
 
 const app = express();
-const PORT = process.env.PORT || 8000;
-const mongoURL = process.env.MONGOURL || 'mongodb://127.0.0.1:27017/ChatApp';
+const PORT = process.env.PORT;
+const mongoURL = process.env.MONGO_URL;
 ConnectToMongo(mongoURL);
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
+app.use(express.static(path.join(__dirname,'../client/build')));
+
+//Routes
 app.use('/user', require('./Routes/UserRoute'));   //userlogin and signup routes
 app.use('/file',require('./Routes/FilesRoute'))    //file upload and download routes
 
+//Rest API
+app.use('*',(req,res)=>{
+    res.sendFile(path.join(__dirname,'./client/build/index.html'))
+})
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {

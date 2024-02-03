@@ -18,7 +18,7 @@ const Signup=()=>{
             body: JSON.stringify(user),
         });
         const data = await response.json();
-        if (response.status != 200) {
+        if (response.status !== 200) {
             setErrmsg(data.msg)
             return setinvalidcred(true);
         }
@@ -34,36 +34,36 @@ const Signup=()=>{
     return (
         <>
         <Nav/>
-            <form className="Logincnt">
-                <div class="wrapper">
-                    <div class="title">
+            <div className="Logincnt">
+                <div className="wrapper">
+                    <div className="title">
                         Register
                     </div>
                     <form action="#">
-                    <div class="field">
+                    <div className="field">
                             <input type="text" required name="name" onChange={handle_change}/>
                                 <label>Your Name</label>
                         </div>
-                        <div class="field">
+                        <div className="field">
                             <input type="text" required name="email" onChange={handle_change}/>
                                 <label>Your Email</label>
                         </div>
-                        <div class="field">
+                        <div className="field">
                             <input type="password" required name="password" onChange={handle_change}/>
                                 <label>Password</label>
                         </div>
                         <div className="Invalid">
                             <p>{invalidcred?errmsg:""}</p>
                         </div>
-                        <div class="field">
+                        <div className="field">
                             <input type="button" className="subbtn" value="REGISTER" onClick={handleRegistration}/>
                         </div>
-                        <div class="signup-link">
-                        Have already an account? ? <Link class="nav-link" to="/login">Login Here</Link>
+                        <div className="signup-link">
+                        Have already an account? ? <Link className="nav-link" to="/login">Login Here</Link>
                         </div>
                     </form>
                 </div>
-            </form>
+            </div>
         </>
     )
 }

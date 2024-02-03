@@ -29,6 +29,10 @@ const Home = () => {
         }
         s.emit('getChats');
         s.on('loadChats', handler);
+
+        return (()=>{
+            s.off('loadChats', handler);
+        })
     }, []);
     useEffect(() => {
         if (!socket) return;
@@ -70,8 +74,8 @@ const Home = () => {
                     </div>
                     <div style={{ margin:"0px",minHeight:"24px",color:"red",textAlign:"center"}}>{errmsg}</div>
                     <div className="UserMap">
-                    {chats.map((chat) =>
-                        <div className={`userTemp ${curChat!=='' && curChat===chat?"activeClass":""}` }onClick={() => setcurChat(chat)}>
+                    {chats.length==0?<p style={{textAlign:"center"}}>No chats to Display</p>:chats.map((chat) =>
+                        <div className={`userTemp ${curChat!=='' && curChat===chat?"activeClass":""}`} key={chat._id} onClick={() => setcurChat(chat)}>
                             <img className="reciverProfileImg" src={img_src} style={{ height: "50px", width: "50px", backgroundColor: "white", borderRadius: "100%" }} />
                             <div className="reciverProfile">
                                 <h5>{chat.reciver.name}</h5>

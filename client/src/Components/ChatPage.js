@@ -92,7 +92,7 @@ const ChatCnt = () => {
                 <div className="msgCnt">
                     <div className="messages">
                         {ChatMsg && ChatMsg.map((msg) =>
-                            {return (<Message msg={msg}/>)}
+                            {return (<Message msg={msg} key={msg._id}/>)}
                         )}
                     </div>
                     <div className="newMsgCnt">

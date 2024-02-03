@@ -1,4 +1,5 @@
-const jwt=require('jsonwebtoken');
+require('dotenv').config()
+const jwt=process.env.JWT_SECRET;
 const secretKey="rhtyfh46#$gf%42#";
 
 const generatToken=(user)=>{

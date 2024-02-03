@@ -13,31 +13,31 @@ const Navbar = () => {
     return (
         <>
             <>
-                <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary sticky-top"  data-bs-theme="dark">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="#" style={{ color: "white" }}>ChatApp</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary sticky-top"  data-bs-theme="dark">
+                    <div className="container-fluid">
+                        <a className="navbar-brand" href="#" style={{ color: "white" }}>MyChatApp</a>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <Link class="nav-link" style={{ color: "white" }} to="/">Home</Link>
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li className="nav-item">
+                                    <Link className="nav-link" style={{ color: "white" }} to="/">Home</Link>
                                 </li>
                             </ul>
-                            <div class="nav-item dropdown" style={{ color: "white" }}>
-                                <a class="nav-link dropdown-toggle profile" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ display: "flex" }}>
+                            <div className="nav-item dropdown" style={{ color: "white" }}>
+                                <a className="nav-link dropdown-toggle profile" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ display: "flex" }}>
                                     <div className="profile mx-2">
                                         <img className='profile_pic mx-2' src={img_src} style={{ height: "40px", width: "40px", backgroundColor: "white", borderRadius: "100%" }} />
                                         <h6 style={{ color: "white" }}>{user}</h6>
                                     </div>
                                 </a>
-                                <ul class="dropdown-menu mx-1">
-                                    <li><button class="dropdown-item" onClick={logout}>Logout</button></li>
+                                <ul className="dropdown-menu mx-1">
+                                    <li><button className="dropdown-item" onClick={logout}>Logout</button></li>
                                 </ul>
                             </div>
                             <div className="notifications mx-3">
-                                <NavLink to='/notifications'><i class="fa fa-bell" style={{ fontSize: "30px", color: "black" }}></i></NavLink>
+                                <NavLink to='/notifications'><i className="fa fa-bell" style={{ fontSize: "30px", color: "black" }}></i></NavLink>
                             </div>
                         </div>
                     </div>
