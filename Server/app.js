@@ -1,8 +1,6 @@
 require('dotenv').config()
 const express = require('express');
 const { Server } = require("socket.io");
-const passport=require('passport');
-const session=require('express-session');
 const http = require('http');
 const cors = require('cors');
 const ConnectToMongo = require('./db');
@@ -18,16 +16,6 @@ ConnectToMongo(mongoURL);
 
 app.use(express.json());
 app.use(cors());
-app.use(passport.initialize());
-app.use(
-    session({
-      secret: "your-secret-key",
-      resave: false,
-      saveUninitialized: true,
-    })
-  );
-app.use (passport.session());
-app.use
 // app.use(express.static(path.join(__dirname,'../client/build')));
 
 //Routes
