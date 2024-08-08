@@ -66,4 +66,7 @@ const handleUserLogin=async (req, res) => {
     }
 }
 
-module.exports={handleUserSignup,handleUserLogin}
+const handleSignupByGoogle=async(req,res)=>{
+    console.log(req.user);
+}
+module.exports={handleUserSignup,handleUserLogin,handleSignupByGoogle}
